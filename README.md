@@ -4,7 +4,7 @@
 Clone dự án từ github
 
 ```bash
-git clone https://github.com/LongHoangABCD/xlaravel
+git clone https://github.com/regN97/xuong_laravel_SP25.git
 ```
 
 **Bước 2:**
