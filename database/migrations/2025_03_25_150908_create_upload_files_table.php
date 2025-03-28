@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('file_path');
             $table->string('file_type', 50);
             $table->foreignId('uploaded_by')->nullable()->constrained('users')->onDelete('set null');
-            $table->timestamp('created_at')->nullable();
+            $table->timestamps();
         });
     }
 
