@@ -80,6 +80,9 @@
             <div class="page-body">
                 <div class="container-fluid">
                     <div class="row">
+                        @if (session('msg'))
+                            <p class="text-success">{{session('msg')}}</p>
+                        @endif
                         @yield('content')
                     </div>
                 </div>
@@ -122,15 +125,15 @@
 
     <!-- Plugins JS -->
     <script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/notify/index.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
+    <script src="{{ asset('assets/js/notify/index.js') }}"></script> --}}
 
     <!-- Apexchar js -->
-    <script src="{{ asset('assets/js/chart/apex-chart/apex-chart1.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/chart/apex-chart/apex-chart1.js') }}"></script>
     <script src="{{ asset('assets/js/chart/apex-chart/moment.min.js') }}"></script>
     <script src="{{ asset('assets/js/chart/apex-chart/apex-chart.js') }}"></script>
     <script src="{{ asset('assets/js/chart/apex-chart/stock-prices.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/apex-chart/chart-custom1.js') }}"></script>
+    <script src="{{ asset('assets/js/chart/apex-chart/chart-custom1.js') }}"></script> --}}
 
 
     <!-- slick slider js -->

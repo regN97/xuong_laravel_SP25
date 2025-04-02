@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
@@ -13,9 +14,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('client.layouts.main');
-});
+})->name('home');
 
-Route::prefix('admin')->as('admin.')->group(function () {
+Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
+Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+Route::post('/post-login', [AuthenticationController::class, 'postLogin'])->name('postLogin');
+Route::get('/register', [AuthenticationController::class, 'register'])->name('register');
+Route::post('/post-register', [AuthenticationController::class, 'postRegister'])->name('postRegister');
+
+
+Route::prefix('admin')->as('admin.')->middleware('check-admin')->group(function () {
     Route::get('/', function () {
         return view('admin.layouts.main');
     })->name('dashboard');
