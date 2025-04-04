@@ -16,14 +16,15 @@ return new class extends Migration
             $table->string('name', 255);
             $table->string('slug')->unique();
             $table->text('description')->nullable();
-            $table->foreignId('category_id')->constrained('categories')->onDelete('restrict');
-            $table->foreignId('brand_id')->constrained('brands')->onDelete('restrict');
+            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('brand_id')->constrained('brands');
             $table->decimal('price', 15, 2);
             $table->decimal('discount', 5, 2)->default(0);
             $table->integer('stock');
             $table->foreignId('image')->nullable()->constrained('upload_files')->onDelete('set null');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

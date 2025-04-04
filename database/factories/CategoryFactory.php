@@ -19,7 +19,6 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => fake()->unique()->word(),
-            'parent_id' => Category::inRandomOrder()->first()->id ?? null,
             'description' => fake()->sentence(),
         ];
     }

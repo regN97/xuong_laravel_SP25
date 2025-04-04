@@ -2,7 +2,7 @@
     <div id="sidebarEffect"></div>
     <div>
         <div class="logo-wrapper logo-wrapper-center">
-            <a href="index.html" data-bs-original-title="" title="">
+            <a href="{{route('admin.dashboard')}}" data-bs-original-title="" title="">
                 <img class="img-fluid for-white" src="{{ asset('assets/images/logo/full-white.png') }}" alt="logo">
             </a>
             <div class="back-btn">
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="logo-icon-wrapper">
-            <a href="index.html">
+            <a href="{{route('admin.dashboard')}}">
                 <img class="img-fluid main-logo main-white" src="{{ asset('assets/images/logo/logo.png') }}"
                     alt="logo">
                 <img class="img-fluid main-logo main-dark" src="{{ asset('assets/images/logo/logo-white.png') }}"

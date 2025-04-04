@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->foreignId('logo')->nullable()->constrained('upload_files')->onDelete('cascade');
+            $table->foreignId('logo')->nullable()->constrained('upload_files')->onDelete('set null');
             $table->text('description')->nullable();
             $table->timestamps();
         });
