@@ -77,6 +77,16 @@ Route::prefix('admin')->as('admin.')->middleware('check-admin')->group(function 
 
         Route::get('/add-brand', [BrandController::class, 'create'])->name('create');
 
+        Route::post('/store-brand', [BrandController::class, 'store'])->name('store');
+
+        Route::get('/edit-brand/{id}', [BrandController::class, 'edit'])->name('edit');
+
+        Route::patch('/update-brand/{id}', [BrandController::class, 'update'])->name('update');
+
+        Route::delete('/delete-brand/{id}', [BrandController::class, 'destroy'])->name('destroy');
+
+        Route::get('/detail-brand/{id}', [BrandController::class, 'detail'])->name('detail');
+
     });
 
     Route::prefix('users')->as('users.')->group(function () {

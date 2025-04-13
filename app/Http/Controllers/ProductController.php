@@ -171,7 +171,7 @@ class ProductController extends Controller
         $slug = Str::slug($req->name, '-');
 
         if (Product::where('slug', $slug)->exists()) {
-            Product::where('id', $req->id)->update([
+            Product::where('id', '=', $req->id)->update([
                 'name' => $req->name,
                 'description' => $req->description,
                 'category_id' => $req->category_id,
@@ -184,7 +184,7 @@ class ProductController extends Controller
             ]);
         } else {
             // Lưu sản phẩm vào bảng products
-            Product::where('id', $req->id)->update([
+            Product::where('id', '=', $req->id)->update([
                 'name' => $req->name,
                 'slug' => $slug,
                 'description' => $req->description,

@@ -47,7 +47,7 @@
                             <td>{{ $product->discount }}</td>
                             <td>{{ $product->stock }}</td>
                             <td>
-                                @if ($product->image)
+                                @if ($product->uploadFile)
                                     <img src="{{ asset('storage/' . $product->uploadFile->file_path) }}"
                                         alt="{{ $product->name }}" style="max-width: 50px;">
                                 @else

@@ -25,4 +25,8 @@ class UploadFile extends Model
     {
         return $this->hasMany(Product::class, 'image', 'id');
     }
+
+    public function brands() {
+        return $this->hasMany(Brand::class, 'logo', 'id');
+    }
 } 
