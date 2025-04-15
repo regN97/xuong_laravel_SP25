@@ -81,7 +81,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         @if (session('msg'))
-                            <p class="text-success">{{session('msg')}}</p>
+                            <p class="text-success">{{ session('msg') }}</p>
                         @endif
                         @yield('content')
                     </div>

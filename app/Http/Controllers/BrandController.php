@@ -8,6 +8,7 @@ use App\Models\UploadFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class BrandController extends Controller
 {
@@ -66,7 +67,14 @@ class BrandController extends Controller
         $brand = Brand::find($req->id);
 
         if ($brand->logo) {
-            $brand->uploadFile()->delete();
+            $file = UploadFile::find($brand->logo);
+            if ($file) {
+                Storage::disk('public')->delete($file->file_path);
+            }
+
+            UploadFile::withTrashed()
+                ->where('id', $brand->logo)
+                ->forceDelete();
         }
 
         $brand->delete();

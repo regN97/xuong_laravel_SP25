@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
@@ -12,9 +13,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('client.layouts.main');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/show-product/{id}', [HomeController::class, 'show'])->name('product.show');
 
 // Route login / register
 Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
@@ -93,17 +93,53 @@ Route::prefix('admin')->as('admin.')->middleware('check-admin')->group(function 
 
         Route::get('/', [UserController::class, 'index'])->name('index');
 
+        Route::get('/add-user', [UserController::class, 'create'])->name('create');
+
+        Route::post('/store-user', [UserController::class, 'store'])->name('store');
+
+        Route::get('/edit-user/{id}', [UserController::class, 'edit'])->name('edit');
+
+        Route::patch('/update-user/{id}', [UserController::class, 'update'])->name('update');
+
+        Route::delete('/delete-user/{id}', [UserController::class, 'destroy'])->name('destroy');
+
+        Route::get('/detail-user/{id}', [UserController::class, 'detail'])->name('detail');
+
     });
 
     Route::prefix('roles')->as('roles.')->group(function () {
 
         Route::get('/', [RoleController::class, 'index'])->name('index');
 
+        Route::get('/add-role', [RoleController::class, 'create'])->name('create');
+
+        Route::post('/store-role', [RoleController::class, 'store'])->name('store');
+
+        Route::get('/edit-role/{id}', [RoleController::class, 'edit'])->name('edit');
+
+        Route::patch('/update-role/{id}', [RoleController::class, 'update'])->name('update');
+
+        Route::delete('/delete-role/{id}', [RoleController::class, 'destroy'])->name('destroy');
+
+        Route::get('/detail-role/{id}', [RoleController::class, 'detail'])->name('detail');
+
     });
 
     Route::prefix('permissions')->as('permissions.')->group(function () {
 
         Route::get('/', [PermissionController::class, 'index'])->name('index');
+
+        Route::get('/add-permission', [PermissionController::class, 'create'])->name('create');
+
+        Route::post('/store-permission', [PermissionController::class, 'store'])->name('store');
+
+        Route::get('/edit-permission/{id}', [PermissionController::class, 'edit'])->name('edit');
+
+        Route::patch('/update-permission/{id}', [PermissionController::class, 'update'])->name('update');
+
+        Route::delete('/delete-permission/{id}', [PermissionController::class, 'destroy'])->name('destroy');
+
+        Route::get('/detail-permission/{id}', [PermissionController::class, 'detail'])->name('detail');
 
     });
 

@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class RolePermission extends Model
+use Illuminate\Database\Eloquent\Relations\Pivot;
+
+class RolePermission extends Pivot
 {
-    use HasFactory;
 
     protected $table = 'role_permissions';
+
+    public $incrementing = true; // hoặc có thể bỏ vì mặc định là true
+    
+    protected $primaryKey = 'id';
 
     public $timestamps = false;
 

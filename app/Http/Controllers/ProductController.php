@@ -88,7 +88,7 @@ class ProductController extends Controller
 
     public function destroy(Request $req)
     {
-        $product = Product::findOrFail($req->id);
+        $product = Product::find($req->id);
         
         if ($product->image) {
             $product->uploadFile()->delete();
